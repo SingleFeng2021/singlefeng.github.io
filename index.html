@@ -1,58 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Single Feng | OrderPin Overseas BD</title>
-<style>
-* {margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif;}
-body {background:#fff;color:#333;line-height:1.6;}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Feng | OrderPin POS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
 
-/* 顶部导航栏 1:1复刻原版 */
-nav {background:#ffffff;box-shadow:0 2px 8px #eee;padding:16px 0;position:sticky;top:0;z-index:99;}
-.nav-container {max-width:1100px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;}
-.nav-logo img {height:38px;}
-.nav-menu a {margin:0 14px;text-decoration:none;color:#222;font-weight:500;font-size:15px;}
-.nav-menu a:hover {color:#1D4ED8;}
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
 
-/* 容器通用 */
-.container {max-width:1100px;margin:0 auto;padding:60px 24px;}
-.hero {text-align:center;padding:40px 0;}
-.hero h1 {font-size:32px;margin-bottom:12px;}
-.hero .region {background:#EFF6FF;color:#1D4ED8;padding:6px 16px;border-radius:999px;display:inline-block;margin:16px 0;}
-.btn-blue {background:#1D4ED8;color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:600;display:inline-block;margin-top:20px;}
-.btn-blue:hover {background:#1E40AF;}
+        /* 导航栏 - 还原原版样式 */
+        nav {
+            background-color: white;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-footer {text-align:center;padding:40px 0;background:#f9fafb;color:#666;font-size:14px;margin-top:40px;}
-</style>
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            height: 32px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #475569;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        /* 主容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 64px 24px;
+        }
+
+        /* 头部Hero区域 */
+        .hero {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #0f172a;
+        }
+
+        .hero .subtitle {
+            font-size: 18px;
+            color: #64748b;
+            margin-bottom: 16px;
+        }
+
+        .hero .region-tag {
+            display: inline-block;
+            background-color: #eff6ff;
+            color: #1d4ed8;
+            padding: 6px 16px;
+            border-radius: 9999px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        /* 卡片区域 */
+        .card {
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+
+        .card h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #0f172a;
+        }
+
+        .card p, .card li {
+            font-size: 16px;
+            color: #475569;
+            margin-bottom: 12px;
+        }
+
+        .card ul {
+            padding-left: 20px;
+        }
+
+        /* 联系方式 */
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            margin-bottom: 12px;
+            color: #475569;
+        }
+
+        .contact-item a {
+            color: #2563eb;
+            text-decoration: none;
+            transition: text-decoration 0.2s;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* CTA按钮 */
+        .cta-section {
+            text-align: center;
+            margin-top: 48px;
+        }
+
+        .cta-button {
+            background-color: #2563eb;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* 页脚 */
+        footer {
+            text-align: center;
+            padding: 32px 0;
+            color: #94a3b8;
+            font-size: 14px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        footer a {
+            color: #64748b;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #2563eb;
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .container {
+                padding: 32px 16px;
+            }
+
+            .card {
+                padding: 24px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="nav-container">
+            <a href="/">
+                <img src="https://www.orderpin.co/_nuxt/logo.9f872c2b.png" alt="OrderPin Logo" class="logo">
+            </a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#products">Products</a>
+                <a href="#partnership">Partnership</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-<!-- 全局导航 -->
-<nav>
-  <div class="nav-container">
-    <div class="nav-logo">
-      <img src="https://www.orderpin.co/_nuxt/logo.9f872c2b.png" alt="OrderPin">
+    <!-- 主内容区 -->
+    <div class="container">
+        <!-- Hero区域 -->
+        <div class="hero">
+            <h1>Single Feng</h1>
+            <p class="subtitle">Overseas Business Development | OrderPin POS</p>
+            <div class="region-tag">Southeast Asia · Middle East · Europe</div>
+            <p style="max-width: 600px; margin: 0 auto; color: #475569;">
+                Official representative of OrderPin POS, focusing on channel partnership & white-label solutions for F&B businesses across my regions.
+            </p>
+        </div>
+
+        <!-- About部分 -->
+        <div id="about" class="card">
+            <h2>About Me</h2>
+            <p>I am Single Feng, dedicated to expanding OrderPin's global footprint through strategic channel partnerships. With deep experience in SaaS and F&B tech, I support resellers, distributors, and entrepreneurs in building profitable POS businesses in Southeast Asia, Middle East, and Europe.</p>
+            <p>I handle the full partnership lifecycle, from onboarding and training to ongoing technical and commercial support, ensuring your success with OrderPin.</p>
+        </div>
+
+        <!-- Products部分 -->
+        <div id="products" class="card">
+            <h2>About OrderPin POS</h2>
+            <ul>
+                <li>All-in-one cloud POS for restaurants, cafes, and F&B chains</li>
+                <li>QR ordering, self-service kiosk, and delivery integrations</li>
+                <li>Built-in KDS, printer management, and payment gateway support</li>
+                <li>Fully white-label ready for regional exclusive partners</li>
+                <li>Multi-language and multi-currency global system</li>
+                <li>AI voice ordering assistant for front-of-house efficiency</li>
+                <li>4,000+ active locations across 15+ countries worldwide</li>
+            </ul>
+        </div>
+
+        <!-- Partnership部分 -->
+        <div id="partnership" class="card">
+            <h2>Channel & White-Label Partnership</h2>
+            <p>We offer exclusive regional agency and white-label cooperation for my markets. Our partners get:</p>
+            <ul>
+                <li>100% white-label brand customization</li>
+                <li>Full technical deployment and maintenance support</li>
+                <li>Business training and sales material kit</li>
+                <li>Multi-language localization adaptation</li>
+                <li>Exclusive regional market protection policy</li>
+            </ul>
+        </div>
+
+        <!-- Contact部分 -->
+        <div id="contact" class="card">
+            <h2>Get In Touch</h2>
+            <div class="contact-item">
+                📧 Email:
+                <a href="mailto:single.feng2021@gmail.com">single.feng2021@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                📞 Phone:
+                <a href="tel:+8613798254189">+86 13798254189</a>
+            </div>
+            <div class="contact-item">
+                💼 LinkedIn:
+                <a href="https://www.linkedin.com/in/single-feng-ab5070159/" target="_blank">View my profile</a>
+            </div>
+            <div class="contact-item">
+                📅 Schedule a Call:
+                <a href="https://calendar.app.google/YMzp64Sok38nsCQV9" target="_blank">Book a time with me</a>
+            </div>
+        </div>
+
+        <!-- CTA按钮 -->
+        <div class="cta-section">
+            <a href="https://calendar.app.google/YMzp64Sok38nsCQV9" target="_blank" class="cta-button">Schedule a Meeting Now</a>
+        </div>
     </div>
-    <div class="nav-menu">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="products.html">Products</a>
-      <a href="partnership.html">Partnership</a>
-      <a href="contact.html">Contact</a>
-    </div>
-  </div>
-</nav>
 
-<!-- 首页内容 -->
-<div class="container hero">
-  <h1>Single Feng</h1>
-  <p>Overseas Business Development Manager</p>
-  <div class="region">Southeast Asia | Middle East | Europe</div>
-  <p style="max-width:600px;margin:20px auto;">Official channel partner representative of OrderPin POS, focusing on regional distribution & white-label SaaS cooperation.</p>
-  <a class="btn-blue" href="contact.html">Get In Touch</a>
-</div>
-
-<footer>© 2025 OrderPin | Single Feng All Rights Reserved</footer>
+    <!-- 页脚 -->
+    <footer>
+        Powered by <a href="https://www.orderpin.co" target="_blank">OrderPin.co</a> | © 2025 All Rights Reserved
+    </footer>
 </body>
 </html>
